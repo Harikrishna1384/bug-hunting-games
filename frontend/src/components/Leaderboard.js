@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import "./Leaderboard.css";
 
 const Leaderboard = ({ token, onBack }) => {
   const [loading, setLoading] = useState(true);
@@ -13,7 +14,6 @@ const Leaderboard = ({ token, onBack }) => {
         });
         const data = await response.json();
         if (response.ok) {
-          console.log("Leaderboard data:", data); // Debug log
           setUsers(data);
         } else {
           setError(data.message || "Failed to fetch leaderboard");
@@ -37,32 +37,43 @@ const Leaderboard = ({ token, onBack }) => {
     );
 
   return (
-    <div>
-      <h2>Leaderboard - Top 20 Users</h2>
-      <button onClick={onBack}>Back</button>
-      <table style={{ width: "100%", borderCollapse: "collapse" }}>
-        <thead>
-          <tr>
-            <th style={{ borderBottom: "1px solid #ccc" }}>Rank</th>
-            <th style={{ borderBottom: "1px solid #ccc" }}>Email</th>
-            <th style={{ borderBottom: "1px solid #ccc" }}>Name</th>
-            <th style={{ borderBottom: "1px solid #ccc" }}>Points</th>
-          </tr>
-        </thead>
-        <tbody>
-          {users.map((user, index) => (
-            <tr key={user._id}>
-              <td style={{ padding: "8px", borderBottom: "1px solid #eee" }}>{index + 1}</td>
-              <td style={{ padding: "8px", borderBottom: "1px solid #eee" }}>{user.email || "-"}</td>
-              <td style={{ padding: "8px", borderBottom: "1px solid #eee" }}>{user.name || "-"}</td>
-              <td style={{ padding: "8px", borderBottom: "1px solid #eee" }}>{user.points}</td>
+    <div className="leaderboard-container">
+      <h1 className="leaderboard-title">
+        <span role="img" aria-label="trophy">🏆</span> Leaderboard
+      </h1>
+      <div className="leaderboard-table-wrapper">
+        <table className="leaderboard-table">
+          <thead>
+            <tr>
+              <th>RANK</th>
+              <th>USERNAME</th>
+              <th>POINTS</th>
+              <th>CHALLENGES COMPLETED</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {users.map((user, idx) => (
+              <tr key={user._id || user.email}>
+                <td>#{idx + 1}</td>
+                <td><b>{user.username || user.name || user.email.split("@")[0]}</b></td>
+                <td><b>{user.points}</b></td>
+                <td>
+                  {/* Use the same field as profile page */}
+                  {user.challengesSolved !== undefined
+                    ? user.challengesSolved
+                    : user.solvedChallenges !== undefined
+                    ? user.solvedChallenges.length
+                    : user.challenges && Array.isArray(user.challenges)
+                    ? user.challenges.length
+                    : 0}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };
-
 
 export default Leaderboard;

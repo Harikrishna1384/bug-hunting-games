@@ -31,13 +31,16 @@ Respond only with the buggy code.
 `;
 
   try {
-    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+    // ✅ Updated model name to the new stable version
+    const model = genAI.getGenerativeModel({ model: "gemini-flash-latest" });
+
     const result = await model.generateContent(prompt);
     const buggyCode = result.response.text();
 
     console.log("Generated buggy code:", buggyCode);
 
-    if (!buggyCode) return res.json({ buggyCode: "// Gemini returned empty, try again" });
+    if (!buggyCode)
+      return res.json({ buggyCode: "// Gemini returned empty, try again" });
 
     res.json({ buggyCode });
   } catch (err) {

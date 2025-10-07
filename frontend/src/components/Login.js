@@ -1,8 +1,11 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import "./Login.css"; // We'll add styles next
 
 const Login = ({ onLogin }) => {
   const [formData, setFormData] = useState({ email: "", password: "" });
   const [message, setMessage] = useState("");
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -29,14 +32,43 @@ const Login = ({ onLogin }) => {
   };
 
   return (
-    <div>
-      <h2>Login</h2>
-      <form onSubmit={handleSubmit}>
-        <input name="email" placeholder="Email" type="email" value={formData.email} onChange={handleChange} required />
-        <input name="password" placeholder="Password" type="password" value={formData.password} onChange={handleChange} required />
-        <button type="submit">Login</button>
-      </form>
-      <p>{message}</p>
+    <div className="login-bg">
+      <div className="login-card">
+        <h1>Bug Hunting Game</h1>
+        <p className="subtitle">Master the art of debugging</p>
+        <form onSubmit={handleSubmit}>
+          <label>Email or Username</label>
+          <input
+            name="email"
+            type="text"
+            placeholder="Email or Username"
+            value={formData.email}
+            onChange={handleChange}
+            required
+          />
+          <label>Password</label>
+          <input
+            name="password"
+            type="password"
+            placeholder="Password"
+            value={formData.password}
+            onChange={handleChange}
+            required
+          />
+          <button type="submit" className="login-btn">Login</button>
+        </form>
+        <p className="register-link">
+          Don't have an account?{" "}
+          <span
+            className="link"
+            onClick={() => navigate("/register")}
+            style={{ cursor: "pointer", color: "#19797A", fontWeight: "bold" }}
+          >
+            Register here
+          </span>
+        </p>
+        {message && <p className="error-msg">{message}</p>}
+      </div>
     </div>
   );
 };

@@ -47,21 +47,30 @@ export const loginUser = async (req, res) => {
   }
 };
 
-
 export const getUserProfile = async (req, res) => {
   try {
-    // Find user by ID from the auth middleware (req.user._id)
     const user = await User.findById(req.user._id).select("-password");
     if (!user) {
       return res.status(404).json({ message: "User not found" });
     }
 
-    // Send back user info including points
+    // Get all users sorted by points descending
+    const allUsers = await User.find().sort({ points: -1 });
+    // Find the rank (index + 1)
+    const rank =
+      allUsers.findIndex((u) => u._id.toString() === user._id.toString()) + 1;
+
+    const challengesSolved = Array.isArray(user.solvedChallenges)
+      ? user.solvedChallenges.length
+      : 0;
+
     res.json({
       _id: user._id,
       name: user.name,
       email: user.email,
       points: user.points || 0,
+      rank: rank || "N/A", // <-- Now rank is calculated
+      challengesSolved,
     });
   } catch (error) {
     console.error("Error fetching user profile:", error);

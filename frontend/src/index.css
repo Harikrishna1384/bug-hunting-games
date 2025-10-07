@@ -11,3 +11,21 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+nav .nav-buttons button {
+  border: 1.5px solid #888;
+  background: #f9f9f9;
+  color: #111;
+  padding: 6px 18px;
+  font-size: 1rem;
+  margin-right: 6px;
+  cursor: pointer;
+  border-radius: 18px; /* Rounded corners */
+  transition: background 0.2s, box-shadow 0.2s;
+  outline: none;
+}
+
+nav .nav-buttons button:hover {
+  background: #e0e0e0;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}

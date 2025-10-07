@@ -1,0 +1,68 @@
+.leaderboard-container {
+  background: #fcfcfa;
+  padding: 2rem;
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center content horizontally */
+}
+
+.leaderboard-title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #218b9e;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.back-btn {
+  margin-bottom: 1rem;
+  padding: 0.4rem 1rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  background: #fff;
+  cursor: pointer;
+}
+
+.leaderboard-table-wrapper {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 2px 8px rgba(33,139,158,0.05);
+  padding: 1rem;
+  width: 90%;
+  max-width: 1200px; /* Limit max width for centering */
+  margin: 0 auto;    /* Center the table wrapper */
+}
+
+.leaderboard-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 1.1rem;
+}
+
+.leaderboard-table th {
+  background: #eaf6fa;
+  color: #218b9e;
+  font-weight: 600;
+  padding: 0.8rem;
+  text-align: left;
+}
+
+.leaderboard-table td {
+  padding: 0.8rem;
+  border-bottom: 1px solid #f3f3f3;
+}
+
+.achievement-badge {
+  display: inline-block;
+  background: #fbeff5;
+  color: #218b9e;
+  border-radius: 8px;
+  padding: 0.2rem 0.7rem;
+  margin-right: 0.3rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  border: 1px solid #f3d6e3;
+}

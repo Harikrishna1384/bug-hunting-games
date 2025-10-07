@@ -26,6 +26,10 @@ const userSchema = mongoose.Schema(
         },
       },
     ],
+    rank: {
+      type: Number,
+      default: null,
+    },
   },
   { timestamps: true }
 );

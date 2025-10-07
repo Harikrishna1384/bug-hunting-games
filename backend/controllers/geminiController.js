@@ -22,7 +22,7 @@ Error Type: ${errorType}
 Respond only with the buggy code without any markdown, language tags, or extra text.
 `;
 
-    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+    const model = genAI.getGenerativeModel({ model: "gemini-flash-latest" });
     const result = await model.generateContent(prompt);
     const buggyCode = result.response.text();
 

@@ -1,38 +1,139 @@
-.App {
-  text-align: center;
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #fcfafa;
+  color: #111;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+nav {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  border-bottom: 1px solid #ccc;
+  padding: 8px 16px;
+  background: #fff;
 }
 
-.App-link {
-  color: #61dafb;
+nav .logo-area {
+  display: flex;
+  align-items: center;
+  margin-right: 24px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+nav .logo-area img {
+  height: 24px;
+  margin-right: 8px;
+}
+
+nav .logo-area span {
+  font-size: 1.3rem;
+  color: #218888;
+  font-weight: 500;
+}
+
+nav .nav-buttons {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+nav .nav-buttons button {
+  border: 1px solid #888;
+  background: #f9f9f9;
+  color: #111;
+  padding: 4px 12px;
+  font-size: 1rem;
+  margin-right: 2px;
+  cursor: pointer;
+  border-radius: 0;
+  transition: background 0.2s;
+}
+
+nav .nav-buttons button:hover {
+  background: #eee;
+}
+
+nav .nav-buttons span {
+  margin-left: 12px;
+  font-size: 1rem;
+  color: #222;
+}
+
+.simple-navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 2rem;
+  background: #fff;
+  border-bottom: 1px solid #eee;
+}
+
+.navbar-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #218b9e;
+}
+
+.navbar-buttons {
+  display: flex;
+  gap: 1rem;
+}
+
+.nav-btn {
+  border: 1.5px solid #d3d3d3;
+  background: #f5f5f5;
+  color: #17697a;
+  padding: 10px 28px;
+  font-size: 1.08rem;
+  border-radius: 12px;
+  cursor: pointer;
+  outline: none;
+  font-weight: 500;
+  transition: background 0.2s, color 0.2s, border 0.2s;
+}
+
+.nav-btn.active {
+  background: #218888;
+  color: #fff;
+  border: none;
+}
+
+.nav-btn:hover:not(.active) {
+  background: #e0e0e0;
+}
+
+.main-content {
+  max-width: 900px;
+  margin: 24px auto;
+  padding: 24px;
+}
+
+h1, h2, h3 {
+  color: #111;
+  font-weight: bold;
+  margin-bottom: 16px;
+}
+
+.challenge-list {
+  margin-top: 16px;
+}
+
+.challenge-list ul {
+  list-style: disc inside;
+  padding-left: 0;
+}
+
+.challenge-list li {
+  margin-bottom: 12px;
+  font-size: 1.1rem;
+}
+
+.challenge-list b {
+  font-weight: bold;
+}
+
+.points-display {
+  margin-left: 18px;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #222;
 }
